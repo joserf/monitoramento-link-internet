@@ -72,7 +72,7 @@ if [ -x /usr/bin/apt-get ]; then
 EOF
   # Download dos scripts
   wget https://raw.githubusercontent.com/joserf/monitoramento-link-internet/master/total_inbound_for_current_hour.sh -O /etc/zabbix/scripts/total_inbound_for_current_hour.sh && \ 
-  wget https://raw.githubusercontent.com/joserf/monitoramento-link-internet/master/otal_outbound_for_current_hour.sh -O /etc/zabbix/scripts/total_outbound_for_current_hour.sh && \
+  wget https://raw.githubusercontent.com/joserf/monitoramento-link-internet/master/total_outbound_for_current_hour.sh -O /etc/zabbix/scripts/total_outbound_for_current_hour.sh && \
   wget https://raw.githubusercontent.com/joserf/monitoramento-link-internet/master/zabbix_todays_total_inbound.sh -O /etc/zabbix/scripts/zabbix_todays_total_inbound.sh && \
   wget https://raw.githubusercontent.com/joserf/monitoramento-link-internet/master/zabbix_todays_total_outbound.sh -O /etc/zabbix/scripts/zabbix_todays_total_outbound.sh
   # 
