@@ -6,4 +6,4 @@ Monitoramento de link de internet com Zabbiz + Grafana
 
 Instalação
 
-    # 
+    # bash <( curl -Ss https://raw.githubusercontent.com/joserf/monitoramento-link-internet/master/install.sh)
