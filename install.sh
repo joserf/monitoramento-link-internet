@@ -27,7 +27,7 @@ if [ -x /usr/bin/apt-get ]; then
   sed -i '271iUserParameter=outbound.currenthour,/etc/zabbix/scripts/total_outbound_for_current_hour.sh' /etc/zabbix/zabbix_agentd.conf
   sed -i '272iUserParameter=inbound.today,/etc/zabbix/scripts/zabbix_todays_total_inbound.sh' /etc/zabbix/zabbix_agentd.conf
   sed -i '273iUserParameter=outbound.today,/etc/zabbix/scripts/zabbix_todays_total_outbound.sh' /etc/zabbix/zabbix_agentd.conf
-  sed -i '274iUserParameter=check.wanip,curl https://checkip.amazonaws.com' /etc/zabbix/zabbix_agentd.conf
+  sed -i '274iUserParameter=check.wanip,curl --silent https://checkip.amazonaws.com' /etc/zabbix/zabbix_agentd.conf
   #
   sed -i '21i\zabbix ALL=NOPASSWD: ALL' /etc/sudoers 
   vnstat -u -i ${VNSTAT_REDE}
