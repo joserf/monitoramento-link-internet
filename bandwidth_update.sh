@@ -10,4 +10,3 @@ then
 else
    echo "vnstat iniciado com sucesso $(date)" > "$log"
 fi
-

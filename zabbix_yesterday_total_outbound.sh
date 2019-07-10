@@ -1,6 +1,6 @@
 #!/bin/bash
-# Total de upload (hoje)
-i=$(vnstat --oneline | awk -F\; '{ print $5 }')
+# Total de upload (ontem)
+i=$(vnstat | tail -n 4 | awk -F\| '{ print $2}'| head -n 1)
 bandwidth_number=$(echo $i | awk '{ print $1 }')
 bandwidth_unit=$(echo $i | awk '{ print $2 }')
 case "$bandwidth_unit" in

@@ -1,5 +1,5 @@
 #!/bin/bash
-# Current month total bandwidth in MB
+# Total de download (hoje)
 i=$(vnstat --oneline | awk -F\; '{ print $4 }')
 bandwidth_number=$(echo $i | awk '{ print $1 }')
 bandwidth_unit=$(echo $i | awk '{ print $2 }')

@@ -1,5 +1,5 @@
 #!/bin/bash
-# Current month total upload bandwidth in MB
+# Total de upload (mes)
 i=$(vnstat --oneline | awk -F\; '{ print $10 }')
 bandwidth_number=$(echo $i | awk '{ print $1 }')
 bandwidth_unit=$(echo $i | awk '{ print $2 }')
