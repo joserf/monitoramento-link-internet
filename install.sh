@@ -23,13 +23,15 @@ if [ -x /usr/bin/apt-get ]; then
   sed -i '48i\DebugLevel=3' /etc/zabbix/zabbix_agentd.conf
   sed -i '65i\EnableRemoteCommands=1' /etc/zabbix/zabbix_agentd.conf
   sed -i '75i\LogRemoteCommands=1' /etc/zabbix/zabbix_agentd.conf
-  sed -i '270iUserParameter=inbound.currenthour,/etc/zabbix/scripts/total_inbound_for_current_hour.sh' /etc/zabbix/zabbix_agentd.conf
-  sed -i '271iUserParameter=outbound.currenthour,/etc/zabbix/scripts/total_outbound_for_current_hour.sh' /etc/zabbix/zabbix_agentd.conf
+  sed -i '270iUserParameter=inbound.currenthour,/etc/zabbix/scripts/zabbix_total_inbound_for_current_hour.sh' /etc/zabbix/zabbix_agentd.conf
+  sed -i '271iUserParameter=outbound.currenthour,/etc/zabbix/scripts/zabbix_total_outbound_for_current_hour.sh' /etc/zabbix/zabbix_agentd.conf
   sed -i '272iUserParameter=inbound.today,/etc/zabbix/scripts/zabbix_todays_total_inbound.sh' /etc/zabbix/zabbix_agentd.conf
   sed -i '273iUserParameter=outbound.today,/etc/zabbix/scripts/zabbix_todays_total_outbound.sh' /etc/zabbix/zabbix_agentd.conf
-  sed -i '274iUserParameter=total.inbound.month,/etc/zabbix/scripts/zabbix_total_month_inbound_bandwidth.sh' /etc/zabbix/zabbix_agentd.conf
-  sed -i '275iUserParameter=total.outbound.month,/etc/zabbix/scripts/zabbix_total_month_outbound_bandwidth.sh' /etc/zabbix/zabbix_agentd.conf
-  sed -i '276iUserParameter=check.wanip,curl --silent https://checkip.amazonaws.com' /etc/zabbix/zabbix_agentd.conf
+  sed -i '274iUserParameter=inbound.yesterday,/etc/zabbix/scripts/zabbix_yesterday_total_inbound.sh' /etc/zabbix/zabbix_agentd.conf
+  sed -i '275iUserParameter=outbound.yesterday,/etc/zabbix/scripts/zabbix_yesterday_total_outbound.sh' /etc/zabbix/zabbix_agentd.conf
+  sed -i '276iUserParameter=total.inbound.month,/etc/zabbix/scripts/zabbix_total_month_inbound_bandwidth.sh' /etc/zabbix/zabbix_agentd.conf
+  sed -i '277iUserParameter=total.outbound.month,/etc/zabbix/scripts/zabbix_total_month_outbound_bandwidth.sh' /etc/zabbix/zabbix_agentd.conf
+  sed -i '278iUserParameter=check.wanip,curl --silent https://checkip.amazonaws.com' /etc/zabbix/zabbix_agentd.conf
   #
   sed -i '21i\zabbix ALL=NOPASSWD: ALL' /etc/sudoers 
   vnstat -u -i ${VNSTAT_REDE}
@@ -73,10 +75,12 @@ if [ -x /usr/bin/apt-get ]; then
   esac
 EOF
   # Download dos scripts
-  wget https://raw.githubusercontent.com/joserf/monitoramento-link-internet/master/total_inbound_for_current_hour.sh -O /etc/zabbix/scripts/total_inbound_for_current_hour.sh && \ 
-  wget https://raw.githubusercontent.com/joserf/monitoramento-link-internet/master/total_outbound_for_current_hour.sh -O /etc/zabbix/scripts/total_outbound_for_current_hour.sh && \
+  wget https://raw.githubusercontent.com/joserf/monitoramento-link-internet/master/zabbix_total_inbound_for_current_hour.sh -O /etc/zabbix/scripts/total_inbound_for_current_hour.sh && \ 
+  wget https://raw.githubusercontent.com/joserf/monitoramento-link-internet/master/zabbix_total_outbound_for_current_hour.sh -O /etc/zabbix/scripts/total_outbound_for_current_hour.sh && \
   wget https://raw.githubusercontent.com/joserf/monitoramento-link-internet/master/zabbix_todays_total_inbound.sh -O /etc/zabbix/scripts/zabbix_todays_total_inbound.sh && \
   wget https://raw.githubusercontent.com/joserf/monitoramento-link-internet/master/zabbix_todays_total_outbound.sh -O /etc/zabbix/scripts/zabbix_todays_total_outbound.sh && \
+  wget https://raw.githubusercontent.com/joserf/monitoramento-link-internet/master/zabbix_yesterday_total_inbound.sh -O /etc/zabbix/scripts/zabbix_yesterday_total_inbound.sh && \
+  wget https://raw.githubusercontent.com/joserf/monitoramento-link-internet/master/zabbix_yesterday_total_outbound.sh -O /etc/zabbix/scripts/zabbix_yesterday_total_outbound.sh && \
   wget https://raw.githubusercontent.com/joserf/monitoramento-link-internet/master/zabbix_total_month_inbound_bandwidth.sh -O /etc/zabbix/scripts/zabbix_total_month_inbound_bandwidth.sh && \
   wget https://raw.githubusercontent.com/joserf/monitoramento-link-internet/master/zabbix_total_month_outbound_bandwidth.sh -O /etc/zabbix/scripts/zabbix_total_month_outbound_bandwidth.sh && \
   wget https://raw.githubusercontent.com/joserf/monitoramento-link-internet/master/bandwidth_update.sh -O /etc/zabbix/scripts/bandwidth_update.sh
