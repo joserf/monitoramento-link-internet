@@ -765,7 +765,7 @@ No nosso exemplo estamos ligando um host com MAC: 04:92:26:d2:c3:68 de seg à se
                     <type>0</type>
                     <snmp_community/>
                     <snmp_oid/>
-                    <key>total.inbound.month</key>
+                    <key>vnstat.total.inbound.month</key>
                     <delay>0;m/30</delay>
                     <history>30d</history>
                     <trends>60d</trends>
@@ -824,7 +824,7 @@ No nosso exemplo estamos ligando um host com MAC: 04:92:26:d2:c3:68 de seg à se
                     <type>0</type>
                     <snmp_community/>
                     <snmp_oid/>
-                    <key>total.outbound.month</key>
+                    <key>vnstat.total.outbound.month</key>
                     <delay>0;m/30</delay>
                     <history>30d</history>
                     <trends>60d</trends>
