@@ -33,8 +33,8 @@ if [ -x /usr/bin/apt-get ]; then
   sed -i '277iUserParameter=total.outbound.month,/etc/zabbix/scripts/zabbix_total_month_outbound_bandwidth.sh' /etc/zabbix/zabbix_agentd.conf
   sed -i '278iUserParameter=check.wanip,curl --silent https://checkip.amazonaws.com' /etc/zabbix/zabbix_agentd.conf
   # vnstat info
-  sed -i '279iUserParameter=vnstat.total.inbound.month,vnstat --oneline | awk -F\; '{ print $9 }' |cut -di -f1
-  sed -i '280iUserParameter=vnstat.total.outbound.month,vnstat --oneline | awk -F\; '{ print $10 }' |cut -di -f1
+  sed -i "279iUserParameter=vnstat.total.inbound.month,vnstat --oneline | awk -F\; '{ print $9 }' |cut -di -f1" /etc/zabbix/zabbix_agentd.conf
+  sed -i "280iUserParameter=vnstat.total.outbound.month,vnstat --oneline | awk -F\; '{ print $10 }' |cut -di -f1" /etc/zabbix/zabbix_agentd.conf
   #
   sed -i '21i\zabbix ALL=NOPASSWD: ALL' /etc/sudoers 
   vnstat -u -i ${VNSTAT_REDE}
